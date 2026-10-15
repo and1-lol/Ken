@@ -3,17 +3,26 @@ import json
 from bs4 import beatifulsoup as bsp
 
 def ask():
+  ignore = ["what", "is", "a", "an", "are", "how", "why", "how", "when"]
   #Turn the query into a list 1
   print("Ken: Search Anything")
   query = input("Search: ")
   process = query.translate(str.maketrans('', '',string.punctuation))
   ask = process1.split()
+
+  priority = []
+  for i in ask:
+    if i not in ignore:
+      priority.append(i)
+    else:
+      continue
+  result = search(priority[0])
   
 def parse():
   #parse results with network() 3
   pass
 
-def search():
+def search(subheading):
   #search wikipedia 2
   url = f'https://en.wikipedia.org/wiki/{subheading}'
 
@@ -37,20 +46,19 @@ def search():
    'Priority': 'u=0, i'
  }
 
- try:   #Adjust Next Session
+ try:
      session = requests.Session()
      response = session.get(url, headers=headers, timeout=10)
      response.raise_for_status()
 
      soup = BeautifulSoup(response.text, 'html.parser')
 
-     price_element = soup.find('fin-streamer', {'data-symbol': (message), 'data-field': 'regularMarketPrice'})
-
-     change_element = soup.find('fin-streamer', {'data-symbol': (message), 'data-field': 'regularMarketChange'})
-     change_percent_element = soup.find('fin-streamer', {'data-symbol': (message), 'data-field': 'regularMarketChangePercent'})
-
+     result = soup.find('h1')
+     return result
+   
  except exception as e:
    print("Error: {e}")
+   return "No Info Found"
 
 def construct():
   #construct a response 4
