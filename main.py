@@ -53,7 +53,7 @@ def search(subheading):
 
      soup = BeautifulSoup(response.text, 'html.parser')
 
-     result = soup.find('h1')
+     result = soup.find('p')
      return result
    
  except exception as e:
@@ -67,3 +67,5 @@ def construct():
 def network():
   #evaluate encoded data 3a
   pass
+
+ask()
