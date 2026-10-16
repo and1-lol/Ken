@@ -4,11 +4,54 @@ from bs4 import BeautifulSoup
 import requests
 import string
 
+letters = {
+  " ": 0
+  "a": 1,
+  "b": 2,
+  "c": 3,
+  "d": 4,
+  "e": 5,
+  "f": 6, 
+  "g": 7,
+  "h": 8,
+  "i": 9,
+  "j": 10,
+  "k": 11,
+  "l": 12,
+  "m": 13,
+  "n": 14,
+  "o": 15,
+  "p": 16,
+  "q": 17,
+  "r": 18,
+  "s": 19,
+  "t": 20,
+  "u": 21,
+  "v": 22,
+  "w": 23,
+  "x": 24,
+  "y": 25,
+  "z": 26,
+  ".": 27,
+  "?": 28,
+  "!": 29,
+  ",": 30,
+  "1": 31,
+  "2": 32,
+  "3": 33,
+  "4": 34,
+  "5": 35,
+  "6": 36,
+  "7": 37,
+  "8": 38,
+  "9": 39,
+  "0": 40,
+}
 def ask():
   ignore = ["what", "is", "a", "an", "are", "how", "why", "how", "when"]
   #Turn the query into a list 1
   print("Ken: Search Anything")
-  #query = input("Search: ")
+  #query = input("Search: ").lower()
   query = "physics"
   process = query.translate(str.maketrans('', '',string.punctuation))
   ask = process.split()
