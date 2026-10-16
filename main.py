@@ -1,6 +1,7 @@
 import math
 import json
-from bs4 import beatifulsoup as bsp
+from bs4 import beatifulsoup
+import requests
 
 def ask():
   ignore = ["what", "is", "a", "an", "are", "how", "why", "how", "when"]
