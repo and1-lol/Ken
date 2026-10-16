@@ -47,6 +47,9 @@ letters = {
   "9": 39,
   "0": 40,
 }
+
+weight = [0,0,0,0,0,0]
+
 def ask():
   ignore = ["what", "is", "a", "an", "are", "how", "why", "how", "when"]
   #Turn the query into a list 1
@@ -76,7 +79,7 @@ def parse(result):
       bit = letters[a]
     else:
       bit = 0
-    bit = a, bit
+    tuple = a, bit
     code.append(tuple)
   
   weighted_results = network(code)
@@ -124,8 +127,22 @@ def construct():
   #construct a response 4
   pass
 
-def network():
+def network(code):
   #evaluate encoded data 3a
-  pass
+  word_pass = []
+  for b, c in code:
+    if iter > 6 or iter < 0:
+      iter = 0
+    weight_i = weight[iter]
+    value = neuron(c, weight_i)
+    if value >= 0.8:
+      word_pass.append(b)
+    iter += 1
 
+  return word_pass
+  
+def neuron(input):
+  #Calculate a Sigmoid for the value entered
+  pass
+  
 ask()
