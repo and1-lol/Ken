@@ -1,15 +1,17 @@
 import math
 import json
-from bs4 import beatifulsoup
+from bs4 import BeautifulSoup
 import requests
+import string
 
 def ask():
   ignore = ["what", "is", "a", "an", "are", "how", "why", "how", "when"]
   #Turn the query into a list 1
   print("Ken: Search Anything")
-  query = input("Search: ")
+  #query = input("Search: ")
+  query = "physics"
   process = query.translate(str.maketrans('', '',string.punctuation))
-  ask = process1.split()
+  ask = process.split()
 
   priority = []
   for i in ask:
@@ -18,7 +20,9 @@ def ask():
     else:
       continue
   result = search(priority[0])
-  
+
+  print(result)
+
 def parse():
   #parse results with network() 3
   pass
@@ -47,17 +51,16 @@ def search(subheading):
    'Priority': 'u=0, i'
  }
 
- try:
+  try:
      session = requests.Session()
      response = session.get(url, headers=headers, timeout=10)
      response.raise_for_status()
 
      soup = BeautifulSoup(response.text, 'html.parser')
-
-     result = soup.find('p')
+     result = soup.find("div", class_="mw-parser-output")
      return result
-   
- except exception as e:
+
+  except Exception as e:
    print("Error: {e}")
    return "No Info Found"
 
