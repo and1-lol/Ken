@@ -21,6 +21,8 @@ def ask():
       continue
   result = search(priority[0])
 
+  phrase = parse(result)
+
   print(result)
 
 def parse():
@@ -57,7 +59,8 @@ def search(subheading):
      response.raise_for_status()
 
      soup = BeautifulSoup(response.text, 'html.parser')
-     result = soup.find("div", class_="mw-parser-output")
+     result1 = soup.find("div", class_="mw-parser-output")
+     result = result.find('p')
      return result
 
   except Exception as e:
