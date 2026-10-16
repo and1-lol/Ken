@@ -5,7 +5,7 @@ import requests
 import string
 
 letters = {
-  " ": 0
+  " ": 41
   "a": 1,
   "b": 2,
   "c": 3,
@@ -68,9 +68,19 @@ def ask():
 
   print(result)
 
-def parse():
+def parse(result):
   #parse results with network() 3
-  pass
+  code = []
+  for a in result:
+    if a in letters: 
+      bit = letters[a]
+    else:
+      bit = 0
+    bit = a, bit
+    code.append(tuple)
+  
+  weighted_results = network(code)
+    
 
 def search(subheading):
   #search wikipedia 2
