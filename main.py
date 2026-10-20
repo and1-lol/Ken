@@ -145,10 +145,10 @@ def network(code):
   
 def neuron(input, weight):
   #Calculate a Sigmoid for the value entered
-  for i in range(6):
-      output = input * weight
+  output = input * weight
+  weight_result = 1 / ((math.e ** (output * -1)) + 1)
+  weight_result += bias
 
+  return weight_result
 
-  
-  
 ask()
