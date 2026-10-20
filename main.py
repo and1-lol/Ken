@@ -50,6 +50,8 @@ letters = {
 
 weight = [0,0,0,0,0,0]
 
+bias = 0
+
 def ask():
   ignore = ["what", "is", "a", "an", "are", "how", "why", "how", "when"]
   #Turn the query into a list 1
@@ -141,8 +143,12 @@ def network(code):
 
   return word_pass
   
-def neuron(input):
+def neuron(input, weight):
   #Calculate a Sigmoid for the value entered
-  pass
+  for i in range(6):
+      output = input * weight
+
+
+  
   
 ask()
