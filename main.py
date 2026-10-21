@@ -132,11 +132,14 @@ def ask():
       priority.append(i)
     else:
       continue
+
+  request = priority[0]
+  
   result = search(priority[0])
 
   phrase = parse(result)
 
-  construct(phrase)
+  construct(phrase, request)
 
 def parse(result):
   #parse results with network() 3
@@ -190,9 +193,10 @@ def search(subheading):
    print("Error: {e}")
    return "No Info Found"
 
-def construct():
+def construct(phrase, request):
   #construct a response 4
-  pass
+  answer = " ".join(word)
+  print(answer)
 
 def network(code):
   #evaluate encoded data 3a
