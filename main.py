@@ -112,8 +112,10 @@ vocab = {
 }
 
 weight = [0,0,0,0,0,0]
-
 bias = 0
+
+weights2 = [0,0,0,0,0,0]
+bias2 = 0
 
 def ask():
   ignore = ["what", "is", "a", "an", "are", "how", "why", "how", "when"]
