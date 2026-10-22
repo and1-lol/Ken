@@ -146,13 +146,17 @@ def ask():
 def parse(result):
   #parse results with network() 3
   code = []
-  for a in result:
+  bits = result.translate(str.maketrans('', '',string.punctuation))
+  word_list = bits.split()
+  for b in word_list:
+   bit = 0
+   for a in b:
     if a in letters: 
-      bit = letters[a]
+      bit += letters[a]
     else:
-      bit = 0
-    tuple = a, bit
-    code.append(tuple)
+      pass
+   tuple = b, bit
+   code.append(tuple)
   
   weighted_results = network(code)
     
@@ -204,7 +208,7 @@ def network(code):
   #evaluate encoded data 3a
   word_pass = []
   iter = 0
-  for b, c in code:
+  for c, d in code:
     if iter > 5 or iter < 0:
       iter = 0
     weight_i = weight[iter]
