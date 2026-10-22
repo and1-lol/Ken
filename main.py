@@ -5,7 +5,7 @@ import requests
 import string
 
 letters = {
-  " ": 41
+  " ": 41,
   "a": 1,
   "b": 2,
   "c": 3,
@@ -136,10 +136,12 @@ def ask():
   request = priority[0]
   
   result = search(priority[0])
+  if result == None:
+    print("No Results")
+  else:
+    phrase = parse(result)
 
-  phrase = parse(result)
-
-  construct(phrase, request)
+    construct(phrase, request)
 
 def parse(result):
   #parse results with network() 3
@@ -186,23 +188,24 @@ def search(subheading):
 
      soup = BeautifulSoup(response.text, 'html.parser')
      result1 = soup.find("div", class_="mw-parser-output")
-     result = result.find('p')
+     result = result1.find('p')
      return result
 
   except Exception as e:
-   print("Error: {e}")
+   print(f"Error: {e}")
    return "No Info Found"
 
 def construct(phrase, request):
   #construct a response 4
-  answer = " ".join(word)
-  print(answer)
+  #answer = " ".join(phrase)
+  print(phrase)
 
 def network(code):
   #evaluate encoded data 3a
   word_pass = []
+  iter = 0
   for b, c in code:
-    if iter > 6 or iter < 0:
+    if iter > 5 or iter < 0:
       iter = 0
     weight_i = weight[iter]
     value = neuron(c, weight_i)
